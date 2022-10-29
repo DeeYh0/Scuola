@@ -5,7 +5,7 @@ import java.util.*;
 //numeri dispari di due cifre, li modifica alternando a un numero dispari un
 //numero pari ottenuto come somma dell’elemento corrente e dell’elemento di posizione precedente.
 
-public class Array
+public class Generator
 {
     public static void main(String[] args)
     {
@@ -24,7 +24,7 @@ public class Array
                 randomNumber = randomNumber + 1;
             }
 
-            if (i%2 == 0) //Se il resto della divisione del numero casuale è diverso da 0, aggiungi all'array i numeri casuali
+            if (i%2 == 0) //Se il resto della divisione di tutti i numeri è uguale a 0, aggiungi direttamente all'array i numeri casuali
             {
                 oddNumber[i] = randomNumber;
             }
@@ -37,7 +37,7 @@ public class Array
         }
 
         //Stampa 10 numeri casuali alternati
-        System.out.println("I NUMERI CASUALI CREATI SONO:\n");
+        System.out.println("\nI NUMERI CASUALI CREATI SONO:\n");
 
         for(int i=0; i < 10; i++)
         {
