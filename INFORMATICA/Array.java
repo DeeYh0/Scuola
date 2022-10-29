@@ -24,23 +24,32 @@ public class Array
                 randomNumber = randomNumber + 1;
             }
 
-            if (i%2 != 0) //Se il resto della divisione del numero casuale è diverso da 0, aggiungi all'array i numeri casuali
+            if (i%2 == 0) //Se il resto della divisione del numero casuale è diverso da 0, aggiungi all'array i numeri casuali
             {
                 oddNumber[i] = randomNumber;
-                
             }
 
-            else 
+            else
             {
                 oddNumber[i] = oddNumber[i - 1] + randomNumber;
             }
            
         }
 
-        //Stampa 10 numeri dispari
+        //Stampa 10 numeri casuali alternati
+        System.out.println("I NUMERI CASUALI CREATI SONO:\n");
+
         for(int i=0; i < 10; i++)
         {
-            System.out.println(oddNumber[i]);
+            if(oddNumber[i]%2 == 0 )
+            {
+                System.out.println("PARI: "+oddNumber[i]);
+            }
+            else
+            {
+                System.out.println("DISPARI: "+oddNumber[i]);
+            }
+            
         }
         
     }
