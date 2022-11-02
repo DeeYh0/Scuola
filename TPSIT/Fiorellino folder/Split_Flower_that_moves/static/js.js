@@ -1,38 +1,43 @@
 let x = 600;
 let y = 300;
-let i, k;
 
 let diameter = 50;
 let radius = diameter/2;
 
+let i=diameter;
+let k=diameter;
 
 function setup()
 {
     createCanvas(600, 300);
     background(0, 210, 0);
-    frameRate(5);
+    frameRate(3);
 }
-
 
 
 function draw()
 {
-    drawFlower(10, 10); //fiore basic
-
     
-
-    if(i<(x / diameter)*diameter)
+    if (i < (x / diameter) * diameter === true)
     {
-        drawFlower(i, k, diameter)
-        i += diameter*2
+        drawFlower(i, k, diameter);
+        i = i+(diameter * 2);
     }
-
-
+    
+    else
+    {
+        i = diameter;
+        k = k+(diameter * 2);
+    }
+    
+    if (k > (y / diameter) * diameter === true)
+    {
+        noLoop();
+    }
 }
 
 
-
-function drawFlower(x, y, diameter, radius)
+function drawFlower(x, y, diameter)
 {
 
     strokeWeight(3);
