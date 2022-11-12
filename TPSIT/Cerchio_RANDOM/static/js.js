@@ -3,7 +3,6 @@ function setup()
     createCanvas(600, 300)
     background(0, 210, 0)
     frameRate(70)
-    
 }
 
 
@@ -13,15 +12,18 @@ function draw()
     {
         fill("white")
         rect(520,120, 64,40 );
+
         let witdh = random(450)
         let height = random(300)
         let diameter = random(30 , 90)
+
         let r = random(0 , 255)
         let g = random(0 , 255)
         let b = random(0 , 255)
+        let a = random(0 , 255)
         
-        fill(r, g, b)
-        circle(witdh, height, 100)
+        fill(r, g, b, a)
+        circle(witdh, height, diameter)
 
 
         //frame counter
