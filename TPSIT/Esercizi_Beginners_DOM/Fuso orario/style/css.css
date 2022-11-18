@@ -1,0 +1,22 @@
+*
+{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#time_zone
+{
+    padding: 30px 20px;
+}
+
+.back
+{
+    padding-left: 10px;
+    height: 50px;
+    width: 60px;
+}
+
+#NEWYORK, #TOKYO, #MOSCA
+{
+    padding-left: 20px;
+}
