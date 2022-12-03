@@ -6,7 +6,7 @@ let increment = 0.01
 let W = 1000
 let H = 400
 
-
+ 
 let amplitudeInput = document.querySelector("[name = ampiezza]")
 let frequencyInput = document.querySelector("[name = frequenza]")
 let phaseInput = document.querySelector("[name = fase]")
