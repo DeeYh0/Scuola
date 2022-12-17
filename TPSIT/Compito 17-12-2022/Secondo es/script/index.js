@@ -6,9 +6,10 @@ let Yo = 0
 
 function setup()
 {
-    createCanvas(w, h);
-    background(220)
+    createCanvas(w, h)
+    background("grey")
 }
+
 
 
 function draw()
@@ -36,8 +37,8 @@ function draw()
 
         if (Xo >= w)
         {
-            Xo = 0;
-            Yo += 20;
+            Xo = 0
+            Yo += 20
         }
 }
 
@@ -52,7 +53,7 @@ function tri(x, y, lenght, t, c) //t = tipo di quadrato      c = colore dei tria
         }
         else if (c === 1)
         {
-            fill(0,0,0);
+            fill(0,0,0)
         }
         triangle(x, y, x + lenght, y, x, y + lenght)
         if (c === 0)
@@ -61,7 +62,7 @@ function tri(x, y, lenght, t, c) //t = tipo di quadrato      c = colore dei tria
         }
         else if (c === 1)
         {
-            fill(255,255,255);
+            fill(255,255,255)
         }
         triangle(x, y + lenght, x + lenght, y + lenght, x + lenght, y)
         } 
@@ -73,7 +74,7 @@ function tri(x, y, lenght, t, c) //t = tipo di quadrato      c = colore dei tria
         }
         else if (c === 1)
         {
-            fill(255,255,255);
+            fill(255,255,255)
         }
         triangle(x, y, x + lenght, y, x + lenght, y + lenght)
 
