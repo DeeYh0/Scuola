@@ -31,6 +31,7 @@ function draw()
     {
         tri(Xo, Yo, 20, 1, 1)
     }
+
     Xo += 20
 
         if (Xo >= w)
@@ -47,20 +48,20 @@ function tri(x, y, lenght, t, c) //t = tipo di quadrato      c = colore dei tria
     {
         if (c === 0)
         {
-            fill("white")
+            fill(255,255,255)
         }
         else if (c === 1)
         {
-            fill("black");
+            fill(0,0,0);
         }
         triangle(x, y, x + lenght, y, x, y + lenght)
         if (c === 0)
         {
-            fill("black");
+            fill(0,0,0);
         }
         else if (c === 1)
         {
-            fill("white");
+            fill(255,255,255);
         }
         triangle(x, y + lenght, x + lenght, y + lenght, x + lenght, y)
         } 
@@ -68,21 +69,21 @@ function tri(x, y, lenght, t, c) //t = tipo di quadrato      c = colore dei tria
         {
         if (c === 0)
         {
-            fill("black")
+            fill(0,0,0)
         }
         else if (c === 1)
         {
-            fill("white");
+            fill(255,255,255);
         }
         triangle(x, y, x + lenght, y, x + lenght, y + lenght)
 
         if (c === 0)
         {
-            fill("white")
+            fill(255,255,255)
         }
         else if (c === 1)
         {
-            fill("black")
+            fill(0,0,0)
         }
         triangle(x, y, x, y + lenght, x + lenght, y + lenght)
     }
