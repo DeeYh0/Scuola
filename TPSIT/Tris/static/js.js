@@ -1,6 +1,7 @@
 let cells = document.querySelectorAll(".cell");
 let currentPlayer = 0;
-let Combinations = [  [0, 1, 2],
+let Combinations = [
+  [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
@@ -9,7 +10,7 @@ let Combinations = [  [0, 1, 2],
   [0, 4, 8],
   [2, 4, 6]
 ];
-let counter = 0;
+
 for(let i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function(e) {
         e.preventDefault();
@@ -41,12 +42,6 @@ function win() {
         else if (a === b && b === c && a === "O"){
             alert("Player 2 ha vinto!");        
         }
-    }
-}
-
-function tie() {
-    if(counter === 9 && !win()){
-        alert("Pareggio!");
     }
 }
 
