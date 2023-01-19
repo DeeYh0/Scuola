@@ -1,0 +1,90 @@
+*
+{
+    margin: 0 auto;
+    box-sizing: border-box; 
+}
+
+.mainBox
+{
+    width: 390px;
+    height: 844px;
+    background-color: #8FD7FF;
+}
+.myText
+{ 
+    font-family: 'Itim', sans-serif;  
+}
+
+.myTitle
+{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    padding-top: 79px;
+    margin-bottom: 50px;
+}
+
+.subTitle
+{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    width: 356px;
+    height: 104px;
+}
+
+#game
+  {
+    width: 300px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+table
+{
+    border-collapse: collapse;
+    background-color: #D4D4D4;
+}
+
+td
+{
+    border: 5px solid rgb(0, 0, 0);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+p
+{
+    display: block;
+    font-family: 'Itim', sans-serif;  
+    margin-top: 100px;
+    margin-bottom: 15px;
+    margin-right: 16px;
+    width: 154px;
+    height: 40px;
+    text-align: center;
+}
+
+img
+{
+    cursor: pointer;
+    width: 181px;
+    height: 49px;
+    margin-top: 26px;
+    margin-bottom: 26px;
+    margin-left: 105px;
+}
+
+.letters
+{
+    font-family: 'Noto Serif', serif;
+    font-weight: bold;
+    font-size: 50px;
+}
+
