@@ -1,6 +1,7 @@
 let cells = document.querySelectorAll(".cell");
 let currentPlayer = 0;
-let Combinations = [  [0, 1, 2],
+let Combinations = [
+  [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
@@ -9,7 +10,9 @@ let Combinations = [  [0, 1, 2],
   [0, 4, 8],
   [2, 4, 6]
 ];
-let counter = 0;
+
+let count = 0;
+
 for(let i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function(e) {
         e.preventDefault();
@@ -18,13 +21,14 @@ for(let i = 0; i < cells.length; i++) {
             if(currentPlayer === 0) { 
                 cells[i].innerHTML = "X"; 
                 currentPlayer = 1;
+                count++;
             } else {
                 cells[i].innerHTML = "O"; 
                 currentPlayer = 0;
+                count++;
             }
             win();
-            tie();
-            counter++;
+           
         }
     });
 }
@@ -42,10 +46,8 @@ function win() {
             alert("Player 2 ha vinto!");        
         }
     }
-}
 
-function tie() {
-    if(counter === 9 && !win()){
+    if(count == 9){
         alert("Pareggio!");
     }
 }
@@ -57,6 +59,7 @@ let resetBtn = document.querySelector(".reset")
             cells[i].innerHTML = ""; 
         }
         currentPlayer = 0;
-        counter = 0;
+        count = 0;
+        
     });
 
