@@ -41,9 +41,11 @@ function win() {
         let c = cells[combination[2]].innerHTML;
         if (a === b && b === c && a === "X") {
             alert("Player 1 ha vinto!");
+            return
         }
         else if (a === b && b === c && a === "O"){
-            alert("Player 2 ha vinto!");        
+            alert("Player 2 ha vinto!");
+            return 
         }
     }
 
