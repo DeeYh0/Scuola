@@ -12,6 +12,7 @@ let Combinations = [
 ];
 
 let count = 0;
+let countX = 0, countY = 0;
 
 for(let i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function(e) {
@@ -41,10 +42,12 @@ function win() {
         let c = cells[combination[2]].innerHTML;
         if (a === b && b === c && a === "X") {
             alert("Player 1 ha vinto!");
+            document.getElementById("p1").innerHTML = parseInt(document.getElementById("p1").textContent) + 1
             return
         }
         else if (a === b && b === c && a === "O"){
             alert("Player 2 ha vinto!");
+            document.getElementById("p2").innerHTML = parseInt(document.getElementById("p2").textContent) + 1
             return 
         }
     }
