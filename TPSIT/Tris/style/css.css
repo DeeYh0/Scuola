@@ -60,15 +60,15 @@ td
     font-size: 40px;
 }
 
-p
+.made
 {
     display: block;
     font-family: 'Itim', sans-serif;  
-    margin-top: 100px;
-    margin-bottom: 15px;
+    margin-top: 29px;
+    margin-bottom: 10px;
     margin-right: 16px;
-    width: 154px;
-    height: 40px;
+    width: 152px;
+    height: 35px;
     text-align: center;
 }
 
@@ -89,4 +89,19 @@ img
     font-size: 50px;
 }
 
+.score, .Score
+{
+    padding-top: 32px;
+    text-align: center;
+}
 
+.score p, .Score p
+{
+    font-family: 'Itim', sans-serif;
+}
+
+
+.scoreBox
+{
+    display: flex;
+}
