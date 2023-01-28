@@ -22,7 +22,7 @@
     font-size: 48px;
     line-height: 58px;
     text-align: center;
-    padding-top: 79px;
+    padding-top: 8px;
     margin-bottom: 50px;
 }
 
@@ -104,4 +104,15 @@ img
 .scoreBox
 {
     display: flex;
+}
+
+.arrow
+{
+    width: 74px;
+    height: 52px;
+    margin: 0;
+    transform: rotate(360deg) scaleY(-1.5);
+    margin-top: 19px;
+    
+
 }

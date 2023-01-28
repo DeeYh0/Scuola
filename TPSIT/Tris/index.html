@@ -4,62 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
-    <title>Gioco del TRIS</title>
-
-    <link rel="stylesheet" type="text/css" href="./style/css.css">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <title>TIC TAC TOE</title>
 </head>
-
 <body>
-   
-    <div class="mainBox">
-        <div class="myText">
-            <h1 class="myTitle">GIOCO DEL TRIS</h1>
-            <h4 class="subTitle">Cerca di posizionare 3 forme uguali in orizzontale, verticale o in obliquo per poter vincere.</h4>
-        </div>
 
-    <a class="resetBtn"><img class="reset" src="./static/img/Button.png"></a>
-
-    <div id="game">
-        <table>
-          <tr>
-            <td class="cell"></td>
-            <td class="cell"></td>
-            <td class="cell"></td>
-          </tr>
-          <tr>
-            <td class="cell"></td>
-            <td class="cell"></td>
-            <td class="cell"></td>
-          </tr>
-          <tr>
-            <td class="cell"></td>
-            <td class="cell"></td>
-            <td class="cell"></td>
-          </tr>
-        </table>
-      </div>
-
-  <div class="scoreBox">
-      <div class="score">
-        <p>Player 1:</p>
-        <p id="p1">0</p>
-      </div>
-      
-      <div class="Score">
-        <p>Player 2:</p>
-        <p id="p2">0</p>
-      </div>
-  </div>      
-     
-        <p class="made">Made by:<br>Lorusso Vito Gabriele</p>
+    <div class="box">
+        <h1>TIC TAC TOE</h1>
+        <p>SCEGLI LA MODALITA' IN CUI GIOCARE!</p>
+      <button><a href="./1VS1.html">PLAYER VS PLAYER</a></button>
+        <button><a href="./1VSPC.html">PLAYER VS PC</a></button>
     </div>
     
-    <script type="text/javascript" src="./static/js.js"></script>
-</body>
-</html>
+    <style>
+        *
+        {
+            margin: 0 auto;
+            box-sizing: border-box; 
+        }
+        .box
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 390px;
+            height: 844px;
+            background-color: #8FD7FF;
+            text-align: center;
+            margin: 0 auto;
+            font-family: 'Itim', sans-serif;  
+            font-size: 30px;
+        }
 
+        a
+        {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        p
+        {
+           margin-bottom: 100px;
+           margin-top: 50px;
+        }
+
+        button
+        {
+            
+            margin-bottom: 50px;
+            background-color: #16178E;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-color: black;
+            border-radius: 5px;
+        }
+
+
+        </style>
+    </body>
+</html>
