@@ -93,7 +93,7 @@ class Elaborazione
           if (carrello[i] > 0)
           {
               scontrino = scontrino + prezzo[i] * carrello[i];
-              System.out.print("x"+carrello[i]+" "+menu[i]+" = "+prezzo[i]+"\n");
+              System.out.print("x"+carrello[i]+" "+menu[i]+" = "+prezzo[i]+" Euro\n");
           }
       }
           prezzoFinale = prezzoFinale + scontrino;
