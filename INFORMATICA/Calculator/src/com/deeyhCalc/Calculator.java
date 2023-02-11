@@ -218,7 +218,7 @@ public class Calculator {
 			}
 		});
 		btnNewButton_9_1_1_2_3.setBackground(new Color(225, 225, 225));
-		btnNewButton_9_1_1_2_3.setFont(new Font("Nyala", Font.PLAIN, 30));
+		btnNewButton_9_1_1_2_3.setFont(new Font("Nyala", Font.PLAIN, 20));
 		btnNewButton_9_1_1_2_3.setBounds(269, 273, 55, 55);
 		frame.getContentPane().add(btnNewButton_9_1_1_2_3);
 		
