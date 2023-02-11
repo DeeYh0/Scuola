@@ -18,6 +18,10 @@ import javax.swing.UIManager;
 import javax.swing.JTextPane;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.DropMode;
+import javax.swing.JTextArea;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JTextField;
 
 public class Calculator {
 
@@ -49,6 +53,7 @@ public class Calculator {
 	public float num2 = 0;
 	public float result = 0;
 	public String operations;
+	private JTextField textField;
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -61,21 +66,21 @@ public class Calculator {
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
-		final JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(new Color(242, 242, 242));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		lblNewLabel.setBounds(10, 77, 314, 101);
-		frame.getContentPane().add(lblNewLabel);
-		
-
+		textField = new JTextField();
+		textField.setBackground(new Color(255, 255, 255));
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 80));
+		textField.setHorizontalAlignment(SwingConstants.RIGHT);
+		textField.setEditable(false);
+		textField.setBounds(10, 77, 314, 101);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 		
 		final JButton btnNewButton_9 = new JButton("0");
 		btnNewButton_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9.getText();
+				textField.setText(Enternumber);
 				
 			}
 		});
@@ -89,42 +94,42 @@ public class Calculator {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String answer;
-				num2 = Float.parseFloat(lblNewLabel.getText());
+				num2 = Float.parseFloat(textField.getText());
 				if(operations == "+")
 				{
 					result = num1 + num2;
 					answer = String.format("%.2f", result);
-					lblNewLabel.setText(answer);
+					textField.setText(answer);
 				}
 				else if(operations == "-")
 				{
 					result = num1 - num2;
 					answer = String.format("%.2f", result);
-					lblNewLabel.setText(answer);
+					textField.setText(answer);
 				}
 				else if(operations == "*")
 				{
 					result = num1 * num2;
 					answer = String.format("%.2f", result);
-					lblNewLabel.setText(answer);
+					textField.setText(answer);
 				}
 				else if(operations == "/")
 				{
 					result = num1 / num2;
 					answer = String.format("%.2f", result);
-					lblNewLabel.setText(answer);
+					textField.setText(answer);
 				}
 				else if(operations == "%")
 				{
 					result = num1 % num2;
 					answer = String.format("%.2f", result);
-					lblNewLabel.setText(answer);
+					textField.setText(answer);
 				}
 				else if (operations == "√") {
 				    result = (float) Math.sqrt(num1);
 				    num2 = 0;
 				    answer = String.format("%.2f", result);
-				    lblNewLabel.setText(answer);
+				    textField.setText(answer);
 				}
 				
 			}
@@ -138,8 +143,8 @@ public class Calculator {
 		btnNewButton_9_1_1.setBackground(new Color(225, 225, 225));
 		btnNewButton_9_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1.getText();
-				lblNewLabel.setText(Enternumber);	
+				String Enternumber = textField.getText() + btnNewButton_9_1_1.getText();
+				textField.setText(Enternumber);	
 			}
 		});
 		btnNewButton_9_1_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -150,8 +155,8 @@ public class Calculator {
 		btnNewButton_9_1_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				num1 = Float.parseFloat(lblNewLabel.getText());
-				lblNewLabel.setText("");
+				num1 = Float.parseFloat(textField.getText());
+				textField.setText("");
 				operations = "+";
 				
 			}
@@ -165,8 +170,8 @@ public class Calculator {
 		btnNewButton_9_1_1_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				num1 = Float.parseFloat(lblNewLabel.getText());
-				lblNewLabel.setText("");
+				num1 = Float.parseFloat(textField.getText());
+				textField.setText("");
 				operations = "-";
 			}
 		});
@@ -179,8 +184,8 @@ public class Calculator {
 		btnNewButton_9_1_1_2_1.setBackground(new Color(225, 225, 225));
 		btnNewButton_9_1_1_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				num1 = Float.parseFloat(lblNewLabel.getText());
-				lblNewLabel.setText("");
+				num1 = Float.parseFloat(textField.getText());
+				textField.setText("");
 				operations = "*";
 			}
 		});
@@ -192,8 +197,8 @@ public class Calculator {
 		btnNewButton_9_1_1_2_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				num1 = Float.parseFloat(lblNewLabel.getText());
-				lblNewLabel.setText("");
+				num1 = Float.parseFloat(textField.getText());
+				textField.setText("");
 				operations = "/";
 			}
 		});
@@ -206,8 +211,8 @@ public class Calculator {
 		btnNewButton_9_1_1_2_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				num1 = Float.parseFloat(lblNewLabel.getText());
-				lblNewLabel.setText("");
+				num1 = Float.parseFloat(textField.getText());
+				textField.setText("");
 				operations = "%";
 				
 			}
@@ -221,8 +226,8 @@ public class Calculator {
 		btnNewButton_9_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_1.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_1.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_1.setBackground(new Color(192, 192, 192));
@@ -234,8 +239,8 @@ public class Calculator {
 		btnNewButton_9_1_1_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_3.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_3.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_3.setBackground(new Color(192, 192, 192));
@@ -249,8 +254,8 @@ public class Calculator {
 		btnNewButton_9_1_1_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_4.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_4.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_4.setBackground(new Color(192, 192, 192));
@@ -262,8 +267,8 @@ public class Calculator {
 		btnNewButton_9_1_1_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_5.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_5.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_5.setBackground(new Color(192, 192, 192));
@@ -275,8 +280,8 @@ public class Calculator {
 		btnNewButton_9_1_1_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_6.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_6.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_6.setBackground(new Color(192, 192, 192));
@@ -288,8 +293,8 @@ public class Calculator {
 		btnNewButton_9_1_1_7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_7.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_7.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_7.setBackground(new Color(192, 192, 192));
@@ -301,7 +306,7 @@ public class Calculator {
 		btnNewButton_9_1_1_10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				lblNewLabel.setText("");
+				textField.setText("");
 			}
 		});
 		btnNewButton_9_1_1_10.setBackground(new Color(255, 83, 83));
@@ -313,8 +318,8 @@ public class Calculator {
 		btnNewButton_9_1_1_5_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_5_1.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_5_1.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_5_1.setBackground(new Color(192, 192, 192));
@@ -326,8 +331,8 @@ public class Calculator {
 		btnNewButton_9_1_1_5_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_5_2.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_5_2.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_5_2.setBackground(new Color(192, 192, 192));
@@ -339,8 +344,8 @@ public class Calculator {
 		btnNewButton_9_1_1_5_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String Enternumber = lblNewLabel.getText() + btnNewButton_9_1_1_5_3.getText();
-				lblNewLabel.setText(Enternumber);
+				String Enternumber = textField.getText() + btnNewButton_9_1_1_5_3.getText();
+				textField.setText(Enternumber);
 			}
 		});
 		btnNewButton_9_1_1_5_3.setBackground(new Color(192, 192, 192));
@@ -349,15 +354,16 @@ public class Calculator {
 		frame.getContentPane().add(btnNewButton_9_1_1_5_3);
 		
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(10, 77, 314, 101);
-		frame.getContentPane().add(editorPane);
-		
 		JLabel lblNewLabel_1 = new JLabel("CALCULATOR 2000");
 		lblNewLabel_1.setBackground(new Color(255, 83, 83));
 		lblNewLabel_1.setFont(new Font("Serif", Font.PLAIN, 35));
 		lblNewLabel_1.setBounds(10, 11, 314, 49);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+		
+		
+		
+		
 		
 		
 	}
