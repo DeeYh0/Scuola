@@ -1,3 +1,9 @@
+let output = document.getElementById("input")
+output.addEventListener("change",(e) => {
+  document.querySelector(".output").innerHTML = DecBin(parseInt(output.value))
+})
+
+
 function DecBin(num)
 {
     if (num === 0)
@@ -16,5 +22,5 @@ function DecBin(num)
     }
   }
   
-  alert(DecBin(20));
+
   
