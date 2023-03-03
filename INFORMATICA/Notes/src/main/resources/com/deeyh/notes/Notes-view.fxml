@@ -1,31 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.notes.NotesController">
-   <top>
-      <MenuBar prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Nuova finestra" />
-                  <MenuItem mnemonicParsing="false" text="Salva File" />
-              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#gitHelp" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <Pane prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextArea layoutX="6.0" layoutY="20.0" prefHeight="499.0" prefWidth="986.0" />
+    <top>
+        <MenuBar prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#newWindow" text="Nuova finestra">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#save" text="Salva File">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" text="Modifica">
+              <items>
+                <MenuItem id="bold" mnemonicParsing="false" onAction="#bold" text="Grassetto">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem id="script" mnemonicParsing="false" onAction="#script" text="Corsivo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem id="underLine" mnemonicParsing="false" onAction="#underLine" text="Sottolineato">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+              </items>
+            </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#gitHelp" text="About">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="H" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <Pane prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextArea id="textArea" fx:id="textArea" layoutX="6.0" layoutY="20.0" prefHeight="495.0" prefWidth="984.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextArea>
          </children>
       </Pane>
    </center>
