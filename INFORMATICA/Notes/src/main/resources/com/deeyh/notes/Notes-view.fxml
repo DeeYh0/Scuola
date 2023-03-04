@@ -53,10 +53,15 @@
     <center>
         <Pane prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <TextArea fx:id="textArea" layoutX="6.0" layoutY="20.0" prefHeight="495.0" prefWidth="984.0">
+                <TextArea fx:id="textArea" layoutX="8.0" layoutY="15.0" prefHeight="487.0" prefWidth="985.0">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font></TextArea>
+            <Label layoutX="803.0" layoutY="502.0" text="Made by: Lorusso Vito Gabriele">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

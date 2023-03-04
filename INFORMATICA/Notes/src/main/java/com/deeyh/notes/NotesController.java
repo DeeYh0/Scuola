@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -53,6 +54,8 @@ public class NotesController {
 
             Stage stage = new Stage();
             stage.setTitle("Notes");
+            Image image = new Image(NotesApplication.class.getResource("icon.png").openStream());
+            stage.getIcons().add(image);
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
