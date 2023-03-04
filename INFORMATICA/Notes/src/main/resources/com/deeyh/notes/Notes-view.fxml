@@ -24,24 +24,21 @@
                     </items>
                 </Menu>
             <Menu mnemonicParsing="false" text="Modifica">
-              <items>
-                <MenuItem id="bold" mnemonicParsing="false" onAction="#bold" text="Grassetto">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem id="script" mnemonicParsing="false" onAction="#script" text="Corsivo">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-                  <MenuItem id="underLine" mnemonicParsing="false" onAction="#underLine" text="Sottolineato">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-              </items>
-            </Menu>
+               <items>
+                  <Menu mnemonicParsing="false" text="Font Style">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#comic" text="Comic Sans MS" />
+                        <MenuItem mnemonicParsing="false" onAction="#microsoft" text="Microsoft Sans Serif" />
+                        <MenuItem mnemonicParsing="false" onAction="#gothic" text="MS Gothic" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Font Weight">
+                    <items>
+                      <MenuItem fx:id="bold" mnemonicParsing="false" onAction="#bold" text="Bold" />
+                        <MenuItem fx:id="italic" mnemonicParsing="false" onAction="#italic" text="Italic" />
+                    </items>
+                  </Menu>
+               </items></Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#gitHelp" text="About">
@@ -56,9 +53,9 @@
     <center>
         <Pane prefHeight="37.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <TextArea id="textArea" fx:id="textArea" layoutX="6.0" layoutY="20.0" prefHeight="495.0" prefWidth="984.0">
+                <TextArea fx:id="textArea" layoutX="6.0" layoutY="20.0" prefHeight="495.0" prefWidth="984.0">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Calibri" size="20.0" />
                </font></TextArea>
          </children>
       </Pane>

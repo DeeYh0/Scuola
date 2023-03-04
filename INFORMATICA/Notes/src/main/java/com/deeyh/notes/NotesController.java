@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -16,6 +18,11 @@ import javafx.stage.Stage;
 
 public class NotesController {
 
+    private Font font = Font.loadFont(NotesApplication.class.getResource("microsoft.ttf").toExternalForm(), 20);
+    private boolean isBold = false;
+    private boolean isItalic = false;
+
+    private boolean isDefault = false;
     @FXML
     private TextArea textArea;
 
@@ -46,6 +53,7 @@ public class NotesController {
 
             Stage stage = new Stage();
             stage.setTitle("Notes");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -67,43 +75,53 @@ public class NotesController {
     }
 
     public void bold() {
-        String selectedText = textArea.getSelectedText();
-
-        if(selectedText != null && !selectedText.isEmpty()) {
-
-            int startIndex = textArea.getSelection().getStart();
-            int endIndex = textArea.getSelection().getEnd();
-            String newText = "<b>" + selectedText + "</b>";
-            textArea.replaceText(startIndex, endIndex, newText);
-
+        if (!isBold) {
+            textArea.setStyle(textArea.getStyle() + "-fx-font-weight: bold;");
+            isBold = true;
+        } else if (isBold) {
+            textArea.setStyle(textArea.getStyle() + "-fx-font-weight: normal;");
+            isBold = false;
         }
     }
 
-    public void underLine() {
-        String selectedText = textArea.getSelectedText();
-
-        if(selectedText != null && !selectedText.isEmpty()) {
-
-            int startIndex = textArea.getSelection().getStart();
-            int endIndex = textArea.getSelection().getEnd();
-            String newText = "<u>" + selectedText + "</u>";
-            textArea.replaceText(startIndex, endIndex, newText);
-
+    public void italic() {
+        if (!isItalic) {
+            textArea.setStyle(textArea.getStyle() + "-fx-font-style: italic;");
+            isItalic = true;
+        } else if (isItalic) {
+            textArea.setStyle(textArea.getStyle() + "-fx-font-style: normal;");
+            isItalic = false;
         }
     }
 
-    public void script() {
-        String selectedText = textArea.getSelectedText();
+    public void comic() {
+        if (!isDefault) {
+            textArea.setFont(Font.font("Comic Sans MS", 20));
+            isDefault = true;
+        } else if (isDefault) {
+            textArea.setFont(Font.font("Calibri", 20));
+            isDefault = false;
+        }
 
-        if(selectedText != null && !selectedText.isEmpty()) {
+    }
 
-            int startIndex = textArea.getSelection().getStart();
-            int endIndex = textArea.getSelection().getEnd();
-            String newText = "<i>" + selectedText + "</i>";
-            textArea.replaceText(startIndex, endIndex, newText);
-
+    public void microsoft() {
+        if (!isDefault) {
+            textArea.setFont(font);
+            isDefault = true;
+        } else if (isDefault) {
+            textArea.setFont(Font.font("Calibri", 20));
+            isDefault = false;
         }
     }
 
-
+    public void gothic() {
+        if (!isDefault) {
+            textArea.setFont(Font.font("MS Gothic", 20));
+            isDefault = true;
+        } else if (isDefault) {
+            textArea.setFont(Font.font("Calibri", 20));
+            isDefault = false;
+        }
+    }
 }

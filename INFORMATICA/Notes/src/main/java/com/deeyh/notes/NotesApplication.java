@@ -11,6 +11,7 @@ public class NotesApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(NotesApplication.class.getResource("Notes-view.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(), 1000, 550);
         stage.setResizable(false);
         stage.setTitle("Notes");
