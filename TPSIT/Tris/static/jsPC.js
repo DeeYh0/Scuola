@@ -24,6 +24,35 @@ function getBestMove(board) {
   return emptyCells[0];
 }
 
+function minimax(board, player) {
+  if (GameOver(board)) {
+    if (isWinner(board, "O")) {
+      return 1;
+    } else if (isWinner(board, "X")) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  let bestScore = player === "O" ? -Infinity : Infinity;
+  let emptyCells = getEmptyCells(board);
+
+  for (let [row, col] of emptyCells) {
+    board[row][col] = player;
+    let score = minimax(board, player === "O" ? "X" : "O");
+    board[row][col] = "";
+
+    if (player === "O") {
+      bestScore = Math.max(score, bestScore);
+    } else {
+      bestScore = Math.min(score, bestScore);
+    }
+  }
+
+  return bestScore;
+}
+
 cells.forEach(cell => {
   cell.addEventListener("click", () => {
     if (cell.innerHTML === "") {
@@ -37,6 +66,7 @@ cells.forEach(cell => {
       
       if (GameOver(board)) {
         alert("HAI VINTO!");
+        document.getElementById("p1").innerHTML = parseInt(document.getElementById("p1").textContent) + 1
         count = 0;
         return;
       }
@@ -50,13 +80,13 @@ cells.forEach(cell => {
 
       if (GameOver(board)) {
         alert("GAME OVER! PC HA VINTO!");
+        document.getElementById("p2").innerHTML = parseInt(document.getElementById("p2").textContent) + 1
         count = 0;
         return;
       }
     }
   });
 });
-
 
 function GameOver(board) {
   //Righe
@@ -90,23 +120,25 @@ function GameOver(board) {
   }
 }
 
-  if(count == 9){
-    alert("Pareggio!");
- } 
+if(count == 9){
+  alert("Pareggio!");
+} 
 
-    return true;
+  return true;
 }
-  
 
-  let resetBtn = document.querySelector(".reset")
-  resetBtn.addEventListener("click", function(event){ 
-  event.preventDefault(); 
-  for (let i = 0; i < cells.length; i++) {
-    cells[i].innerHTML = ""; 
-  }
-    board = [
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', ''],
-    ];
+
+let resetBtn = document.querySelector(".reset")
+resetBtn.addEventListener("click", function(event){ 
+event.preventDefault(); 
+for (let i = 0; i < cells.length; i++) {
+  cells[i].innerHTML = ""; 
+}
+  board = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', ''],
+  ];
+
+  count = 0;
 });
