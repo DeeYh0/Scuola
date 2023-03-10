@@ -6,6 +6,7 @@ let board = [
 ];
 
 let count = 0;
+let isFinished = false;
 
 function getEmptyCells(board) {
   let emptyCells = [];
@@ -58,20 +59,25 @@ cells.forEach(cell => {
     if (cell.innerHTML === "") {
 
     //PLAYER
+    if(!isFinished)
+    {
       cell.innerHTML = "X";
       let row = cell.parentNode.rowIndex; //riferito al <tr>
       let col = cell.cellIndex; //riferito al <td>
       board[row][col] = "X";
       count++;
-      
       if (GameOver(board)) {
         alert("HAI VINTO!");
         document.getElementById("p1").innerHTML = parseInt(document.getElementById("p1").textContent) + 1
+        isFinished = true;
         count = 0;
         return;
-      }
-
+    }
+  }
+      
     //PC
+    if(!isFinished)
+    {
       let [rowIndex, colIndex] = getBestMove(board);
       let computerCell = cells[rowIndex * 3 + colIndex];
       computerCell.innerHTML = "O";
@@ -82,8 +88,10 @@ cells.forEach(cell => {
         alert("GAME OVER! PC HA VINTO!");
         document.getElementById("p2").innerHTML = parseInt(document.getElementById("p2").textContent) + 1
         count = 0;
+        isFinished = true;
         return;
       }
+    }
     }
   });
 });
@@ -124,7 +132,7 @@ if(count == 9){
   alert("Pareggio!");
 } 
 
-  return true;
+  return false;
 }
 
 
@@ -141,4 +149,5 @@ for (let i = 0; i < cells.length; i++) {
   ];
 
   count = 0;
+  isFinished = false;
 });
