@@ -22,7 +22,7 @@ function getEmptyCells(board) {
 
 function getBestMove(board) {
   let emptyCells = getEmptyCells(board);
-  return emptyCells[0];
+  return emptyCells[0]; 
 }
 
 function minimax(board, player) {

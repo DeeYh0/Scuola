@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-9.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
+         <children>
+            <MenuBar layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Pazienti">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Registra Paziente" />
+                        <MenuItem mnemonicParsing="false" text="Visualizza Pazienti" />
+                        <MenuItem mnemonicParsing="false" text="Gestione Pazienti" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Chi siamo?">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About us" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="EXIT" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="157.0" fitWidth="220.0" layoutX="328.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="229.0" fitWidth="287.0" layoutX="509.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@1.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="214.0" fitWidth="226.0" layoutX="22.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@2.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="197.0" layoutY="373.0" prefHeight="167.0" prefWidth="624.0" text="CURIAMO I VOSTRI">
+               <font>
+                  <Font name="Gentium Book Basic Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label layoutX="197.0" layoutY="416.0" prefHeight="167.0" prefWidth="624.0" text=" DENTI DAL 1998">
+               <font>
+                  <Font name="Gentium Book Basic Bold" size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
