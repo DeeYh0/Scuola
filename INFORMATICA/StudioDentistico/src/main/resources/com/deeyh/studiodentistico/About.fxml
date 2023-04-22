@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.studiodentistico.StudioController">
    <children>
@@ -20,12 +19,13 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Chi siamo?">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#about" text="About us" />
+                    <MenuItem mnemonicParsing="false" text="About us" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" onAction="#close" text="Help">
+                <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#close" text="EXIT" />
+                    <MenuItem mnemonicParsing="false" onAction="#home" text="HOME" />
+                        <MenuItem mnemonicParsing="false" onAction="#close" text="EXIT" />
                   </items>
                 </Menu>
               </menus>
@@ -35,26 +35,6 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="229.0" fitWidth="287.0" layoutX="509.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@1.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="214.0" fitWidth="226.0" layoutX="22.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@2.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="173.0" layoutY="394.0" prefHeight="167.0" prefWidth="624.0" text="CURIAMO I VOSTRI">
-               <font>
-                  <Font name="Gentium Book Basic Bold" size="31.0" />
-               </font>
-            </Label>
-            <Label layoutX="173.0" layoutY="437.0" prefHeight="167.0" prefWidth="624.0" text=" DENTI DAL 1998">
-               <font>
-                  <Font name="Gentium Book Basic Bold" size="31.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
