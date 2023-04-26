@@ -38,6 +38,6 @@ public class StudioController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.show();
-        ab.show(false);
+
     }
 }

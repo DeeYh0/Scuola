@@ -11,8 +11,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StudioApplication extends Application {
+    Stage stage;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StudioApplication.class.getResource("Studio-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Studio Dentistico");
