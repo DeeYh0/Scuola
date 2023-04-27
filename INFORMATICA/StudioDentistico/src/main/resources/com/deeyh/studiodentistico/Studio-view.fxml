@@ -13,8 +13,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Pazienti">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Registra Paziente" />
-                        <MenuItem mnemonicParsing="false" text="Visualizza Pazienti" />
+                    <MenuItem mnemonicParsing="false" onAction="#registra" text="Registra Paziente" />
+                        <MenuItem mnemonicParsing="false" onAction="#visualizza" text="Visualizza Pazienti" />
                         <MenuItem mnemonicParsing="false" text="Gestione Pazienti" />
                   </items>
                 </Menu>

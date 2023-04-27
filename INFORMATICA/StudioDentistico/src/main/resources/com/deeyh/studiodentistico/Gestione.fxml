@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.studiodentistico.StudioController">
+   <children>
+      <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
+         <children>
+            <MenuBar layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Pazienti">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Registra Paziente" />
+                        <MenuItem mnemonicParsing="false" text="Visualizza Pazienti" />
+                        <MenuItem mnemonicParsing="false" text="Gestione Pazienti" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Chi siamo?">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About us" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#home" text="HOME" />
+                        <MenuItem mnemonicParsing="false" onAction="#close" text="EXIT" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ImageView fitHeight="123.0" fitWidth="139.0" layoutX="22.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="255.0" layoutY="85.0" prefHeight="57.0" prefWidth="346.0" text="GESTIONE PAZIENTI">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

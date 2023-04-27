@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.studiodentistico.StudioController">
    <children>
@@ -33,6 +34,36 @@
             <ImageView fitHeight="157.0" fitWidth="220.0" layoutX="328.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="28.0" layoutY="262.0" prefHeight="17.0" prefWidth="756.0" text="Da oltre 20 anni, il nostro studio dentistico si prende cura dei vostri denti con passione ">
+               <font>
+                  <Font name="Candara Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="287.0" prefHeight="17.0" prefWidth="756.0" text="e professionalità. Dal 1998, abbiamo aiutato migliaia di pazienti a ritrovare il sorriso e">
+               <font>
+                  <Font name="Candara Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="312.0" prefHeight="17.0" prefWidth="756.0" text="e la salute orale. Affidati alla nostra esperienza e competenza per avere denti sani">
+               <font>
+                  <Font name="Candara Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="337.0" prefHeight="17.0" prefWidth="756.0" text="e forti. Ti aspettiamo nel nostro studio per offrirti il meglio delle cure dentali.">
+               <font>
+                  <Font name="Candara Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="316.0" layoutY="538.0" prefHeight="52.0" prefWidth="484.0" text="Prenota subito una visita!">
+               <font>
+                  <Font name="Candara Bold" size="43.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="200.0" fitWidth="266.0" layoutX="29.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@2.jpg" />
                </image>
             </ImageView>
          </children>
