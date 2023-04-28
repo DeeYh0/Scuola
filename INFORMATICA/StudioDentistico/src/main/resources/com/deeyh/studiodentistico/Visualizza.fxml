@@ -7,20 +7,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.studiodentistico.StudioController">
    <children>
-      <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
+      <AnchorPane fx:id="print" layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
          <children>
-            <MenuBar layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
+            <MenuBar fx:id="menubar" layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Pazienti">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Registra Paziente" />
-                        <MenuItem mnemonicParsing="false" text="Visualizza Pazienti" />
-                        <MenuItem mnemonicParsing="false" text="Gestione Pazienti" />
+                    <MenuItem mnemonicParsing="false" onAction="#registra" text="Registra Paziente" />
+                        <MenuItem mnemonicParsing="false" onAction="#visualizza" text="Visualizza Pazienti" />
+                        <MenuItem mnemonicParsing="false" onAction="#gestione" text="Gestione Pazienti" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Chi siamo?">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About us" />
+                    <MenuItem mnemonicParsing="false" onAction="#about" text="About us" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -41,9 +41,9 @@
                   <Font size="38.0" />
                </font>
             </Label>
-            <TextArea layoutX="22.0" layoutY="207.0" prefHeight="378.0" prefWidth="769.0">
+            <TextArea fx:id="printPatient" editable="false" layoutX="22.0" layoutY="208.0" prefHeight="385.0" prefWidth="767.0">
                <font>
-                  <Font size="34.0" />
+                  <Font size="30.0" />
                </font></TextArea>
          </children>
       </AnchorPane>

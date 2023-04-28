@@ -9,18 +9,18 @@
    <children>
       <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
          <children>
-            <MenuBar layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
+            <MenuBar fx:id="menubar" layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Pazienti">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Registra Paziente" />
-                        <MenuItem mnemonicParsing="false" text="Visualizza Pazienti" />
-                        <MenuItem mnemonicParsing="false" text="Gestione Pazienti" />
+                    <MenuItem mnemonicParsing="false" onAction="#registra" text="Registra Paziente" />
+                        <MenuItem mnemonicParsing="false" onAction="#visualizza" text="Visualizza Pazienti" />
+                        <MenuItem mnemonicParsing="false" onAction="#gestione" text="Gestione Pazienti" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Chi siamo?">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About us" />
+                    <MenuItem mnemonicParsing="false" onAction="#about" text="About us" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -46,7 +46,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="314.0" prefHeight="30.0" prefWidth="178.0" text="DATA DI NASCITA:">
+            <Label layoutX="36.0" layoutY="314.0" prefHeight="30.0" prefWidth="178.0" text="ETA':">
                <font>
                   <Font size="20.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="604.0" layoutY="516.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="178.0" text="REGISTRA">
+            <Button layoutX="604.0" layoutY="516.0" mnemonicParsing="false" onAction="#submit" prefHeight="64.0" prefWidth="178.0" text="REGISTRA">
                <font>
                   <Font name="Alef Regular" size="27.0" />
                </font></Button>
@@ -70,33 +70,38 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="125.0" layoutY="204.0" prefHeight="39.0" prefWidth="461.0">
+            <TextField fx:id="name" layoutX="125.0" layoutY="204.0" prefHeight="39.0" prefWidth="461.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
-            <TextField layoutX="148.0" layoutY="258.0" prefHeight="39.0" prefWidth="438.0">
+            <TextField fx:id="surname" layoutX="148.0" layoutY="258.0" prefHeight="39.0" prefWidth="438.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
-            <TextField layoutX="214.0" layoutY="310.0" prefHeight="39.0" prefWidth="373.0">
+            <TextField fx:id="age" layoutX="90.0" layoutY="310.0" prefHeight="40.0" prefWidth="497.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
-            <TextField layoutX="83.0" layoutY="359.0" prefHeight="39.0" prefWidth="504.0">
+            <TextField fx:id="cf" layoutX="83.0" layoutY="359.0" prefHeight="39.0" prefWidth="504.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
-            <TextField layoutX="155.0" layoutY="411.0" prefHeight="39.0" prefWidth="431.0">
+            <TextField fx:id="residenza" layoutX="155.0" layoutY="411.0" prefHeight="39.0" prefWidth="431.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
-            <TextField layoutX="140.0" layoutY="462.0" prefHeight="39.0" prefWidth="447.0">
+            <TextField fx:id="sintomi" layoutX="140.0" layoutY="462.0" prefHeight="39.0" prefWidth="447.0">
                <font>
                   <Font size="19.0" />
                </font></TextField>
             <Label layoutX="45.0" layoutY="209.0" prefHeight="30.0" prefWidth="76.0" text="NOME:">
                <font>
                   <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirm" contentDisplay="CENTER" layoutX="45.0" layoutY="528.0" prefHeight="59.0" prefWidth="271.0" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
