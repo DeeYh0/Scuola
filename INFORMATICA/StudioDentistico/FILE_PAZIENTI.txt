@@ -1,7 +1,0 @@
-Nome: 343
-Cognome: 4343
-Età: 3
-Codice Fiscale: 34
-Residenza: 3434
-Sintomi: 3434
-
