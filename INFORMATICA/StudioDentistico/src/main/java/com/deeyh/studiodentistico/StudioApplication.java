@@ -14,6 +14,8 @@ public class StudioApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StudioApplication.class.getResource("Studio-view.fxml"));
+        Image image = new Image(StudioApplication.class.getResource("logo.png").openStream());
+        stage.getIcons().add(image);
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Studio Dentistico");
         stage.setScene(scene);

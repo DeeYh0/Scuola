@@ -41,6 +41,20 @@
                   <Font size="38.0" />
                </font>
             </Label>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="22.0" layoutY="543.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@plus.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="743.0" layoutY="543.0" onMouseClicked="#remove" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@minus.png" />
+               </image></ImageView>
+            <TextArea editable="false" layoutX="22.0" layoutY="208.0" prefHeight="322.0" prefWidth="771.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </TextArea>
          </children>
       </AnchorPane>
    </children>

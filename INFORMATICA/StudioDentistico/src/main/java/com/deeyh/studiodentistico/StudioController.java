@@ -9,16 +9,23 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
- class Pazienti {
+class Pazienti {
     public String name;
     public String surname;
     public String age;
@@ -61,9 +68,8 @@ import java.util.Scanner;
          return sintomi;
      }
  }
-
-class SaveFile {
-    FileWriter fileWriter = new FileWriter("FILE_PAZIENTI.txt", true);
+ class SaveFile {
+     FileWriter fileWriter = new FileWriter("FILE_PAZIENTI.txt", true);
     BufferedWriter buffered = new BufferedWriter(fileWriter);
 
     public boolean registraPaziente(ArrayList<Pazienti> pazienti) {
@@ -90,13 +96,15 @@ public class StudioController {
     public Label confirm;
     @FXML
     private TextField name, surname, age, cf, residenza, sintomi;
-    private TextArea printPatient;
+    @FXML
+    public TextArea printPatient = new TextArea();
     private Stage PazientiStage;
     private Scene PazientiScene;
     private Parent root;
     @FXML
     private MenuBar menubar;
-
+    private ImageView add;
+    private ImageView remove;
     public void close()
     {
         System.exit(0);
@@ -161,6 +169,7 @@ public class StudioController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        viewPatient();
     }
 
 
@@ -203,18 +212,26 @@ public class StudioController {
             confirm.setTextFill(Color.RED);
         }
         resetField();
-        viewPatient();
     }
 
     @FXML
     public void viewPatient() throws IOException {
+
         BufferedReader reader = new BufferedReader(new FileReader("FILE_PAZIENTI.txt"));
         String line = reader.readLine();
-        while (line != null) {
-            System.out.println(line);
-            line = reader.readLine();
+        if (line == null) {
+            System.out.println("NON CI SONO PAZIENTI");
+        } else {
+            while (line != null) {
+                System.out.println(line);
+                printPatient.setText(line);
+                line = reader.readLine();
+
+            }
         }
-        }
+        reader.close();
+
+    }
 
     @FXML
     public void resetField() {
@@ -226,5 +243,28 @@ public class StudioController {
         sintomi.setText("");
     }
 
+    @FXML
+    public void add()
+    {
+        try{
+            root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
+            PazientiStage = (Stage)menubar.getScene().getWindow();
+            PazientiStage.setTitle("Registra Pazienti");
+            PazientiScene = new Scene(root);
+            PazientiStage.setScene(PazientiScene);
+            PazientiStage.show();
+            PazientiStage.setResizable(false);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void remove() throws IOException {
+        File inputFile = new File("FILE_PAZIENTI.txt");
+        List<String> lines = Files.readAllLines(inputFile.toPath());
+
+        lines.subList(0, 7).clear();
+        Files.write(inputFile.toPath(), lines);
+    }
 }
