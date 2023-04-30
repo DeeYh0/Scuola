@@ -41,7 +41,7 @@
                   <Font size="38.0" />
                </font>
             </Label>
-            <TextArea fx:id="printPatient" editable="false" layoutX="22.0" layoutY="208.0" prefHeight="382.0" prefWidth="769.0">
+            <TextArea fx:id="printPatient" editable="false" layoutX="22.0" layoutY="208.0" prefHeight="382.0" prefWidth="769.0" wrapText="true">
                <font>
                   <Font size="30.0" />
                </font>

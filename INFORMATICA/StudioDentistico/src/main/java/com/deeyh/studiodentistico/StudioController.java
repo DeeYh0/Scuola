@@ -92,7 +92,7 @@ class Pazienti {
 
 
 public class StudioController {
-    ArrayList<Pazienti> patients = new ArrayList<>();
+
     public Label confirm;
     @FXML
     private TextField name, surname, age, cf, residenza, sintomi;
@@ -259,12 +259,20 @@ public class StudioController {
             e.printStackTrace();
         }
     }
+
+
     @FXML
     public void remove() throws IOException {
-        File inputFile = new File("FILE_PAZIENTI.txt");
-        List<String> lines = Files.readAllLines(inputFile.toPath());
+        try {
+            File inputFile = new File("FILE_PAZIENTI.txt");
+            List<String> lines = Files.readAllLines(inputFile.toPath());
 
-        lines.subList(0, 7).clear();
-        Files.write(inputFile.toPath(), lines);
+            lines.subList(0, 7).clear();
+            Files.write(inputFile.toPath(), lines);
+        }
+        catch (Exception e)
+        {
+            System.out.println("NON CI SONO PIU PAZIENTI IN LISTA");
+        }
     }
 }
