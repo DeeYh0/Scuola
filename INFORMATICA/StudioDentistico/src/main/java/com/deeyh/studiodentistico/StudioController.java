@@ -10,20 +10,13 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 class Pazienti {
     public String name;
@@ -97,9 +90,10 @@ public class StudioController {
     @FXML
     private TextField name, surname, age, cf, residenza, sintomi;
     @FXML
-    public TextArea printPatient = new TextArea();
+    private TextArea printPatient;
     private Stage PazientiStage;
     private Scene PazientiScene;
+    @FXML
     private Parent root;
     @FXML
     private MenuBar menubar;
@@ -128,7 +122,7 @@ public class StudioController {
     public void home() throws IOException {
         try {
             root = FXMLLoader.load(getClass().getResource("Studio-view.fxml"));
-            PazientiStage = (Stage)menubar.getScene().getWindow();
+            PazientiStage = (Stage) menubar.getScene().getWindow();
             PazientiStage.setTitle("Studio Dentistico");
             PazientiScene = new Scene(root);
             PazientiStage.setScene(PazientiScene);
@@ -169,7 +163,6 @@ public class StudioController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        viewPatient();
     }
 
 
@@ -213,7 +206,7 @@ public class StudioController {
         }
         resetField();
     }
-
+/*
     @FXML
     public void viewPatient() throws IOException {
 
@@ -233,6 +226,8 @@ public class StudioController {
 
     }
 
+ */
+
     @FXML
     public void resetField() {
         name.setText("");
@@ -243,36 +238,5 @@ public class StudioController {
         sintomi.setText("");
     }
 
-    @FXML
-    public void add()
-    {
-        try{
-            root = FXMLLoader.load(getClass().getResource("Registra.fxml"));
-            PazientiStage = (Stage)menubar.getScene().getWindow();
-            PazientiStage.setTitle("Registra Pazienti");
-            PazientiScene = new Scene(root);
-            PazientiStage.setScene(PazientiScene);
-            PazientiStage.show();
-            PazientiStage.setResizable(false);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    public void remove() throws IOException {
-        try {
-            File inputFile = new File("FILE_PAZIENTI.txt");
-            List<String> lines = Files.readAllLines(inputFile.toPath());
-
-            lines.subList(0, 7).clear();
-            Files.write(inputFile.toPath(), lines);
-        }
-        catch (Exception e)
-        {
-            System.out.println("NON CI SONO PIU PAZIENTI IN LISTA");
-        }
-    }
 }

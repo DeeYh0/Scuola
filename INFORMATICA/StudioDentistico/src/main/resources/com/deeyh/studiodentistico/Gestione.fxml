@@ -2,20 +2,22 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.deeyh.studiodentistico.StudioController">
-   <children>
-      <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
-         <children>
-            <MenuBar fx:id="menubar" layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Pazienti">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#registra" text="Registra Paziente" />
-                        <MenuItem mnemonicParsing="false" onAction="#visualizza" text="Visualizza Pazienti" />
-                        <MenuItem mnemonicParsing="false" onAction="#gestione" text="Gestione Pazienti" />
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      fx:controller="com.deeyh.studiodentistico.VisualizzzaController">
+    <children>
+        <AnchorPane layoutX="-7.0" layoutY="-7.0" prefHeight="615.0" prefWidth="814.0">
+            <children>
+                <MenuBar fx:id="menubar" layoutX="6.0" layoutY="9.0" prefHeight="39.0" prefWidth="800.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Pazienti">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#registra" text="Registra Paziente"/>
+                                <MenuItem mnemonicParsing="false" onAction="#visualizza" text="Visualizza Pazienti"/>
+                                <MenuItem mnemonicParsing="false" onAction="#gestione" text="Gestione Pazienti"/>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Chi siamo?">
@@ -50,11 +52,12 @@
                <image>
                   <Image url="@minus.png" />
                </image></ImageView>
-            <TextArea editable="false" layoutX="22.0" layoutY="208.0" prefHeight="322.0" prefWidth="771.0">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </TextArea>
+                <TextArea fx:id="printPatient" editable="false" layoutX="22.0" layoutY="208.0" prefHeight="322.0"
+                          prefWidth="771.0">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </TextArea>
          </children>
       </AnchorPane>
    </children>
