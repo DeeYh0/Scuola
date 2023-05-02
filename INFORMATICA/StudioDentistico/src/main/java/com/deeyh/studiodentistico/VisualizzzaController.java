@@ -103,6 +103,8 @@ public class VisualizzzaController {
         System.exit(0);
     }
 
+
+
     public void about() {
         try {
             root = FXMLLoader.load(getClass().getResource("About.fxml"));
@@ -163,6 +165,5 @@ public class VisualizzzaController {
         }
         viewPatient();
     }
-
 
 }

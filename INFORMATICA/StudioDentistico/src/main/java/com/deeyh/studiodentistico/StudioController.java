@@ -206,27 +206,6 @@ public class StudioController {
         }
         resetField();
     }
-/*
-    @FXML
-    public void viewPatient() throws IOException {
-
-        BufferedReader reader = new BufferedReader(new FileReader("FILE_PAZIENTI.txt"));
-        String line = reader.readLine();
-        if (line == null) {
-            System.out.println("NON CI SONO PAZIENTI");
-        } else {
-            while (line != null) {
-                System.out.println(line);
-                printPatient.setText(line);
-                line = reader.readLine();
-
-            }
-        }
-        reader.close();
-
-    }
-
- */
 
     @FXML
     public void resetField() {
@@ -237,6 +216,5 @@ public class StudioController {
         residenza.setText("");
         sintomi.setText("");
     }
-
 
 }
