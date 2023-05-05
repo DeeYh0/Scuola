@@ -104,7 +104,6 @@ public class VisualizzzaController {
     }
 
 
-
     public void about() {
         try {
             root = FXMLLoader.load(getClass().getResource("About.fxml"));
@@ -157,13 +156,11 @@ public class VisualizzzaController {
         try {
             File inputFile = new File("FILE_PAZIENTI.txt");
             List<String> lines = Files.readAllLines(inputFile.toPath());
-
-            lines.subList(0, 7).clear();
+            lines.subList(0, 2).clear();
             Files.write(inputFile.toPath(), lines);
         } catch (Exception e) {
             System.out.println("NON CI SONO PIU PAZIENTI IN LISTA");
         }
         viewPatient();
     }
-
 }

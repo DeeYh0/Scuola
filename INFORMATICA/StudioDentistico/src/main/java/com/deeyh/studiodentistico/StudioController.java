@@ -17,6 +17,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Pazienti {
     public String name;
@@ -40,45 +42,58 @@ class Pazienti {
     {
         return name;
     }
-     public String returnCognome()
-     {
-         return surname;
-     }
-     public String returneta()
-     {
-         return age;
-     }
-     public String returncf()
-     {
-         return cf;
-     }
-     public String returnresidenza()
-     {
-         return residenza;
-     }
-     public String returnsintomi()
-     {
-         return sintomi;
-     }
- }
- class SaveFile {
-     FileWriter fileWriter = new FileWriter("FILE_PAZIENTI.txt", true);
-    BufferedWriter buffered = new BufferedWriter(fileWriter);
+
+    public String returnCognome()
+    {
+        return surname;
+    }
+
+    public String returneta()
+    {
+        return age;
+    }
+
+    public String returncf()
+    {
+        return cf;
+    }
+
+    public String returnresidenza()
+    {
+        return residenza;
+    }
+
+    public String returnsintomi()
+    {
+        return sintomi;
+    }
+
+    public String toString() {
+        return name + ",    " + surname + ",    " + age + ",    " + cf + ", " + residenza + ",  " + sintomi;
+    }
+}
+
+class SaveFile {
+    private FileWriter fileWriter;
+    private BufferedWriter bufferedWriter;
+
+    public SaveFile() throws IOException {
+        fileWriter = new FileWriter("FILE_PAZIENTI.txt", true);
+        bufferedWriter = new BufferedWriter(fileWriter);
+    }
 
     public boolean registraPaziente(ArrayList<Pazienti> pazienti) {
         try {
             for (Pazienti p : pazienti) {
-                buffered.write(p.name + "\n" + p.surname + "\n" + p.age + "\n" + p.residenza + "\n" + p.cf + "\n" + p.sintomi + "\n");
+                String pazienteString = p.toString() + "\n";
+                bufferedWriter.write(pazienteString);
             }
-            buffered.close();
+            bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("ERROR 104");
             return false;
         }
         return true;
-    }
-
-    SaveFile() throws IOException {
     }
 }
 
