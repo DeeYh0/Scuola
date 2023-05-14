@@ -12,7 +12,7 @@ function determinePiatto(score) {
     {
       nome: "Popizze",
       descrizione: "Sei un fan delle popizze! Questo piatto ti piace croccante e saporito.",
-      valore: 30
+      valore: 40
     },
     {
       nome: "Sgagliozze",
@@ -22,7 +22,7 @@ function determinePiatto(score) {
     {
       nome: "Panzerotto",
       descrizione: "Sei un fan dei panzerotti! Questo piatto ti piace morbido e cotto al punto giusto.",
-      valore: 90
+      valore: 80
     }
   ];
 
@@ -52,7 +52,14 @@ submitButton.addEventListener("click", function(event) {
   let piatto = determinePiatto(score);
 
   let resultElement = document.getElementById("result");
-  resultElement.innerHTML = `Sei un ${piatto.nome}! ${piatto.descrizione}`;
+  
+  let piattoElement = document.createElement("h2");
+  piattoElement.innerText = "Sei un " + piatto.nome + "!";
+  resultElement.appendChild(piattoElement);
+
+  let descrizioneElement = document.createElement("p");
+  descrizioneElement.innerText = piatto.descrizione;
+  resultElement.appendChild(descrizioneElement);
 
   submitButton.disabled = true;
 });
@@ -68,4 +75,3 @@ resetButton.addEventListener("click", function() {
   document.getElementById("result").innerHTML = "";
   submitButton.disabled = false;
 });
-
