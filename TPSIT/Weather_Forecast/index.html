@@ -6,23 +6,39 @@
     <title>Weather</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./style/css.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
-    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]" >
+    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://e0.pxfuel.com/wallpapers/765/709/desktop-wallpaper-black-and-white-storm-lightning-weather-black-aesthetic-dark-thunderstorm.jpg')]" >
         
         <div class="flex flex-col h-screen justify-center items-center"> 
-            <h1 class="text-white text-7xl mb-4">Weather Forecast API</h1> 
-            <h3 class="text-white text-3xl mb-4">Seamless integration of high-resolution weather models with up 16 days forecast</h3>
+            <h1 class="text-white font-bold text-7xl mb-4">Weather Forecast API</h1> 
+            <h3 class="text-white text-3xl font-bold mb-10">Seamless integration of high-resolution weather models with up to 16 days forecast</h3>
 
-            <form class="flex flex-col">
-                <div class="mb-4">
-                    <input placeholder="Longitudine" class="rounded-md text-center">
+            <div id="map" class="w-[600px] h-[300px] mb-2"></div>
+
+            <div class="mt-4 flex flex-col sm:flex-row">
+                <div class="mb-4 sm:mr-2">
+                    <form id="coordinates-form">
+                        <div class="mb-2 flex items-center">
+                            <label class="block text-700 text-white text-sm font-bold mr-2" for="latitudine"></label>
+                            <input type="text" id="latitudine" name="latitudine" class="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Latitude">
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-blue-300 self-start ml-[70px]">Submit</button>
+                    </form>
                 </div>
-                <div class="mb-4">
-                    <input placeholder="Latitudine" class="rounded-md text-center">
+                <div class="mb-4 sm:ml-2">
+                    <form id="coordinates-form">
+                        <div class="mb-2 flex items-center">
+                            <label class="block text-gray-700 text-white text-sm font-bold mr-2" for="longitudine"></label>
+                            <input type="text" id="longitudine" name="longitudine" class="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Longitude">
+                        </div>
+                        <button type="reset" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-gray-600 self-start ml-[80px]">Reset</button>
+                    </form>
                 </div>
-                <input type="submit" class="border bg-white rounded-md">
-            </form>
+            </div>
         </div>
     </div>
     
