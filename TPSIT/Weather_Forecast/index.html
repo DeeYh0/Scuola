@@ -11,34 +11,48 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
-    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://e0.pxfuel.com/wallpapers/765/709/desktop-wallpaper-black-and-white-storm-lightning-weather-black-aesthetic-dark-thunderstorm.jpg')]" >
+    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://cdn.wallpapersafari.com/76/64/WClTyX.jpg')]" >
         
         <div class="flex flex-col h-screen justify-center items-center"> 
             <h1 class="text-white font-bold text-7xl mb-4">Weather Forecast API</h1> 
             <h3 class="text-white text-3xl font-bold mb-10">Seamless integration of high-resolution weather models with up to 16 days forecast</h3>
 
-            <div id="map" class="w-[600px] h-[300px] mb-2"></div>
+            <div id="map" class="w-[600px] h-[300px] mb-2 border-solid border-4 border-500 border-black"></div>
 
             <div class="mt-4 flex flex-col sm:flex-row">
                 <div class="mb-4 sm:mr-2">
                     <form id="coordinates-form">
                         <div class="mb-2 flex items-center">
                             <label class="block text-700 text-white text-sm font-bold mr-2" for="latitudine"></label>
-                            <input type="text" id="latitudine" name="latitudine" class="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Latitude">
+                            <input type="text" id="latitudine" name="latitudine" class="border-solid border-2 border-500 border-black border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-red-300" placeholder="Latitude" value="">
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-blue-300 self-start ml-[70px]">Submit</button>
+                        <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-red-300 self-start ml-[70px]">Submit</button>
                     </form>
                 </div>
                 <div class="mb-4 sm:ml-2">
                     <form id="coordinates-form">
-                        <div class="mb-2 flex items-center">
+                        <div class="mb-2 flex items-cen ter">
                             <label class="block text-gray-700 text-white text-sm font-bold mr-2" for="longitudine"></label>
-                            <input type="text" id="longitudine" name="longitudine" class="border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Longitude">
+                            <input type="text" id="longitudine" name="longitudine" class="border-solid border-2 border-500 border-black border rounded-lg w-full py-2 px-3 focus:outline-none focus:ring focus:border-red-300" placeholder="Longitude" value="">
                         </div>
-                        <button type="reset" class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-gray-600 self-start ml-[80px]">Reset</button>
+                        <button type="reset" id="reset-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-gray-600 self-start ml-[80px]">Reset</button>
                     </form>
                 </div>
             </div>
+
+            <div id="weather-data" class="mt-4 bg-[aqua] rounded-lg px-[20px] border-solid border-2 border-500 border-black border rounded-lg">
+                <div class="flex flex-col mt-2">
+                    <div class="mb-2">
+                        <span class="text-700 text-black text-2xl">Min Temperature:</span>
+                        <span id="min-temperature" class="text-black text-lg ml-2"></span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-700 text-black text-2xl">Max Temperature:</span>
+                        <span id="max-temperature" class="text-black text-lg ml-2"></span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
     
