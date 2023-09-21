@@ -6,12 +6,14 @@
     <title>Weather</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./style/css.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">    
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
-    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://cdn.wallpapersafari.com/76/64/WClTyX.jpg')]" >
+    <div class="h-screen bg-no-repeat bg-cover bg-[url('https://cdn.wallpapersafari.com/76/64/WClTyX.jpg')]" style="overflow: auto;" >
         
         <div class="flex flex-col h-screen justify-center items-center"> 
             <h1 class="text-white font-bold text-7xl mb-4">Weather Forecast API</h1> 
@@ -29,6 +31,9 @@
                         <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-red-300 self-start ml-[70px]">Submit</button>
                     </form>
                 </div>
+
+                <button id="show-chart-button" class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:border-blue-300 self-center">Show Chart</button>
+
                 <div class="mb-4 sm:ml-2">
                     <form id="coordinates-form">
                         <div class="mb-2 flex items-cen ter">
@@ -52,7 +57,10 @@
                     </div>
                 </div>
             </div>
-            
+        </div>
+
+        <div id="chart-container" class="mt-4 w-3/4 md:w-1/2 mx-auto">
+            <canvas id="myChart" class="ml-[30px] mt-4 mb-[50px] bg-white" width="400" height="200">
         </div>
     </div>
     
