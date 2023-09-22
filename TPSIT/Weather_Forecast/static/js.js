@@ -2,11 +2,6 @@ let marker;
 let minTemperature;
 let maxTemperature;
 let map;
-let chartData = {
-    labels: [],
-    temperature: [],
-    humidity: [],
-};
 
 function getWeather(latitude, longitude) {
     return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_min,temperature_2m_max`)
@@ -106,132 +101,111 @@ let resetButton = document.querySelector("#reset-button").addEventListener('clic
 
 //grafico
 
-document.querySelector("#show-chart-button").addEventListener('click', () => {
+document.querySelector("#show-chart-button").addEventListener('click', async () => {
     let chartContainer = document.querySelector("#chart-container");
     if (chartContainer.style.display === 'none' || chartContainer.style.display === '') {
         chartContainer.style.display = 'block';
 
-        let currentTime = new Date();
-        let currentHour = currentTime.getHours();
+        try {
+            let latitude = document.querySelector("#latitudine").value;
+            let longitude = document.querySelector("#longitudine").value;
+            let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m`;
+            let response = await fetch(url);
+            let data = await response.json();
 
-        let labels = [];
-        let temperaturePoints = [];
-        let humidityPoints = [];
+            let ore = data.hourly.time;
+            let temperature = data.hourly.temperature_2m;
+            let umidita = data.hourly.relativehumidity_2m;
 
-        for (let i = 0; i <= currentHour; i++) {
-            labels.push(i + ":00");
-            temperaturePoints.push(chartData.temperature[i]);
-            humidityPoints.push(chartData.humidity[i]);
+            let indiceAttuale = new Date().getHours();
+
+            let oreFiltrate = ore.slice(0, indiceAttuale + 1);
+            let temperatureFiltrate = temperature.slice(0, indiceAttuale + 1);
+            let umiditaFiltrata = umidita.slice(0, indiceAttuale + 1);
+            
+            createChart(oreFiltrate, temperatureFiltrate, umiditaFiltrata);
+        } catch (error) {
+            console.error("Errore API:", error);
         }
-
-        if (myChart) {
-            myChart.destroy();
-        }
-
-        createChart(labels, temperaturePoints, humidityPoints);
     } else {
         chartContainer.style.display = 'none';
     }
 });
 
 
-
-
 let myChart; 
 
 function createChart(labels, temperatureData, humidityData) {
-    let ctx = document.getElementById("myChart").getContext("2d");
+    let canvas = document.querySelector("canvas");
 
-    myChart = new Chart(ctx, {
-        type: "line",
+    let config = {
+        type: 'line',
         data: {
-            labels: labels,
+            labels: labels, 
             datasets: [
                 {
-                    label: "Temperatura (°C)",
-                    data: temperatureData,
-                    borderColor: "rgba(255, 99, 132, 1)",
-                    backgroundColor: "rgba(255, 99, 132, 0.2)",
-                    yAxisID: "temperature-y-axis",
+                    label: 'Temperatura 2m',
+                    data: temperatureData, 
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    yAxisID: 'y',
                 },
                 {
-                    label: "Umidità (%)",
-                    data: humidityData,
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                    yAxisID: "humidity-y-axis",
-                },
-            ],
+                    label: 'Umidità',
+                    data: humidityData, 
+                    fill: false,
+                    borderColor: 'rgb(255, 0, 0)',
+                    tension: 0.1,
+                    yAxisID: 'y1',
+                }
+            ]
         },
-        options: {
-            scales: {
-                x: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: "Ore",
-                    },
-                },
-                y: {
-                    position: "left",
-                    display: true,
-                    title: {
-                        display: true,
-                        text: "Temperatura (°C) / Umidità (%)",
-                    },
-                },
+        scales: {
+            y: {
+                type: 'linear',
+                position: 'left',
             },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: "top",
-                },
-            },
-        },
-    });
-}
-
-
-document.querySelector("#coordinates-form").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    let latitude = document.querySelector("#latitudine").value;
-    let longitude = document.querySelector("#longitudine").value;
-
-    try {
-        let data = await getWeather(latitude, longitude);
-        let temperatureData = data.daily.temperature_2m_min;
-        let humidityData = data.daily.temperature_2m_max;
-
-        let currentTime = new Date();
-        let currentHour = currentTime.getHours();
-        let totalHours = 24; 
-        let labels = [];
-        let temperaturePoints = [];
-        let humidityPoints = [];
-
-        for (let i = 0; i <= totalHours; i++) {
-            labels.push(i + ":00");
-
-            if (i <= currentHour) {
-                temperaturePoints.push(temperatureData[i]);
-                humidityPoints.push(humidityData[i]);
-            } else {
-                temperaturePoints.push(null);
-                humidityPoints.push(null);
+            y1: {
+                type: 'linear',
+                position: 'right' 
             }
         }
+    };
 
-        chartData.labels = labels;
-        chartData.temperature = temperaturePoints;
-        chartData.humidity = humidityPoints;
+    myChart = new Chart(canvas, config);
+}
 
-        if (myChart) {
-            myChart.destroy();
-        }
-        createChart();
+document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    let latitudine = document.querySelector("#lat").value;
+    let longitudine = document.querySelector("#lng").value;
 
-    } catch (error) {
-        console.error("Errore API:", error);
-    }
+    console.log(latitudine, longitudine);
+
+    let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudine}&longitude=${longitudine}&hourly=temperature_2m,relativehumidity_2m`;
+
+    console.log(url);
+
+    fetch(url)
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(function (data) {
+            console.log(data.hourly.time);
+            console.log(data.hourly.temperature_2m);
+            console.log(data.hourly.relativehumidity_2m);
+
+            let ore = data.hourly.time;
+            let temperature = data.hourly.temperature_2m;
+            let umidita = data.hourly.relativehumidity_2m;
+
+            let indiceAttuale = new Date().getHours();
+
+            let oreFiltrate = ore.slice(0, indiceAttuale + 1).map(time => new Date(time).getHours());
+            let temperatureFiltrate = temperature.slice(0, indiceAttuale + 1);
+            let umiditaFiltrata = umidita.slice(0, indiceAttuale + 1);
+
+            createChart(oreFiltrate, temperatureFiltrate, umiditaFiltrata);
+        });
 });
