@@ -110,35 +110,53 @@ document.querySelector("#show-chart-button").addEventListener('click', () => {
     let chartContainer = document.querySelector("#chart-container");
     if (chartContainer.style.display === 'none' || chartContainer.style.display === '') {
         chartContainer.style.display = 'block';
-        if (myChart) {
-            myChart.destroy(); 
+
+        let currentTime = new Date();
+        let currentHour = currentTime.getHours();
+
+        let labels = [];
+        let temperaturePoints = [];
+        let humidityPoints = [];
+
+        for (let i = 0; i <= currentHour; i++) {
+            labels.push(i + ":00");
+            temperaturePoints.push(chartData.temperature[i]);
+            humidityPoints.push(chartData.humidity[i]);
         }
-        createChart();
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        createChart(labels, temperaturePoints, humidityPoints);
     } else {
         chartContainer.style.display = 'none';
     }
 });
 
+
+
+
 let myChart; 
 
-function createChart() {
+function createChart(labels, temperatureData, humidityData) {
     let ctx = document.getElementById("myChart").getContext("2d");
 
     myChart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: chartData.labels,
+            labels: labels,
             datasets: [
                 {
                     label: "Temperatura (°C)",
-                    data: chartData.temperature,
+                    data: temperatureData,
                     borderColor: "rgba(255, 99, 132, 1)",
                     backgroundColor: "rgba(255, 99, 132, 0.2)",
                     yAxisID: "temperature-y-axis",
                 },
                 {
                     label: "Umidità (%)",
-                    data: chartData.humidity,
+                    data: humidityData,
                     borderColor: "rgba(75, 192, 192, 1)",
                     backgroundColor: "rgba(75, 192, 192, 0.2)",
                     yAxisID: "humidity-y-axis",
@@ -154,12 +172,12 @@ function createChart() {
                         text: "Ore",
                     },
                 },
-                y: { 
+                y: {
                     position: "left",
                     display: true,
                     title: {
                         display: true,
-                        text: "Temperatura (°C) / Umidità (%)", 
+                        text: "Temperatura (°C) / Umidità (%)",
                     },
                 },
             },
@@ -168,7 +186,7 @@ function createChart() {
                     display: true,
                     position: "top",
                 },
-            },                            
+            },
         },
     });
 }
@@ -217,4 +235,3 @@ document.querySelector("#coordinates-form").addEventListener("submit", async fun
         console.error("Errore API:", error);
     }
 });
-
