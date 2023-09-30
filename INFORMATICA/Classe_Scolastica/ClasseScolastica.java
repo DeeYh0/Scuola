@@ -51,7 +51,7 @@ public class ClasseScolastica {
 
                     boolean trovato = false;
                     for (Studente studente : classe) {
-                        if (studente.getNome().equals(nomeDaCercare) && studente.getCognome().equals(cognomeDaCercare)) {
+                        if (studente.nome().equals(nomeDaCercare) && studente.cognome().equals(cognomeDaCercare)) {
                             System.out.println("\nStudente trovato: " + studente + "\n");
                             trovato = true;
                             break;
