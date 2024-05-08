@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="registrazione.css">
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="user">
+        <div id="passeggero">
+            <h1>CIAO PASSEGGERO!</h1>
+            <form action="../registrazione.php" method="post">
+                <label for="cf">Codice fiscale</label>
+                <input type="text" name="cf" id="cf">
+                <br>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <br>
+                <label for="cognome">cogNome</label>
+                <input type="text" name="cognome" id="cognome">
+                <br>
+                <label for="nt">numero di telefono</label>
+                <input type="number" name="nt" id="nt">
+                <br>
+                <label for="email">email</label>
+                <input type="text" name="email" id="email">
+                <br>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password">
+                <br>
+                <input type="radio" name="utente">
+                <input type="submit">
+            </form>
+        </div>
+        <div id="autista">
+            <h1>CIAO AUTISTA!</h1>
+            <form action="../registrazione.php" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <br>
+                <label for="cognome">cogNome</label>
+                <input type="text" name="cognome" id="cognome">
+                <br>
+                <label for="nt">numero di telefono</label>
+                <input type="number" name="nt" id="nt">
+                <br>
+                <label for="email">email</label>
+                <input type="text" name="email" id="email">
+                <br>
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password">
+                <br>
+                <p>dati importanti per il viaggio</p>
+                <label for="numero_patente">Numero patente</label>
+                <input type="text" name="numero_patente" id="numero_patente">
+                <br>
+                <label for="scadenzaPatente">Scadenza patente</label>
+                <input type="date" name="scadenzaPatente" id="scadenzaPatente">
+                <br>
+                <label for="targa">Targa</label>
+                <input type="text" name="targa" id="targa">
+                <br>
+                <input type="radio" name="utente" checked>
+                <input type="submit">
+            </form>
+        </div>
+        <a href="../login/login.html">vai al login</a>
+    </div>
+    <script src="./scriptRegistrazione.js"></script>
+</body>
+</html>

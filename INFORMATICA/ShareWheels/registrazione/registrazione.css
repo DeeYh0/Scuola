@@ -1,0 +1,50 @@
+/* Reset dello stile predefinito del body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Stile del contenitore principale */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stile dei pulsanti */
+.button {
+  background-color: #6a1de2;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+/* Stile dei form */
+.form {
+  display: none;
+}
+
+/* Stile dei titoli */
+h1 {
+  color: #6a1de2;
+}
+
+/* Stile dei campi input */
+.input_field {
+  margin-bottom: 15px;
+}
+
+/* Stile dei link */
+a {
+  color: #6a1de2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

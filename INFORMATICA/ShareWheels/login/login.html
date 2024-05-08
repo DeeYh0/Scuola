@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+/* Stile generale del body */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #7a1de2; /* Sfondo viola chiaro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Stile del wrapper del form */
+.form_wrapper {
+  width: 400px;
+  padding: 20px;
+  background-color: #ffffff; /* Colore di sfondo bianco */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Stile del titolo del form */
+.title_container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title_container h1 {
+  color: #6a1b9a; /* Viola */
+}
+
+/* Stile dei campi di input */
+.input_field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input_field input[type="text"],
+.input_field input[type="email"],
+.input_field input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc; /* Viola chiaro */
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input_field input[type="text"]:focus,
+.input_field input[type="email"]:focus,
+.input_field input[type="password"]:focus {
+  border-color: #6a1b9a; /* Viola */
+}
+
+/* Stile del pulsante di submit */
+.button{
+  background-color: #6a1b9a; /* Viola */
+  color: #ffffff; /* Bianco */
+  border: none;
+  padding: 10px 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #4a148c; /* Viola più scuro al passaggio del mouse */
+}
+
+a{
+  text-decoration: none;
+  
+}
+    </style>
+</head>
+<body>
+    <div class="form_wrapper">
+        <div class="form_container">
+            <div class="title_container">
+                <h1>LOGIN</h1>
+            </div>
+            <div class="row clearfix">
+                <div class="">
+                    <form action="../login.php" method="post">
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                            <input type="text" name="email" id="email" placeholder="Email" required />
+                        </div>
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                            <input type="password" name="password" id="password" placeholder="Password" required />
+                        </div>
+                        <input type="submit" class="button" style="margin-left: 8%;" value="Login"/> 
+                        <br><br>
+                        <a class="button" href="../index.html" style="padding: 4px 8px">Torna alla Home</a>
+                        <a class="button" href="../registrazione/portale_reg.html" style="padding: 4px 8px; margin-left: 46% ;">Sign UP</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
