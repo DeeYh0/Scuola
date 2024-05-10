@@ -29,7 +29,6 @@ if (isset($_SESSION['email'])) {
             // Inserisci la richiesta nel database
             $insert_query = "INSERT INTO Richieste (viaggio_id, passeggero_email) VALUES ('$viaggio_id', '$email_passeggero')";
             if ($conn->query($insert_query) === TRUE) {
-                echo "Richiesta di partecipazione inviata con successo.";
             } else {
                 echo "Errore durante l'invio della richiesta: " . $conn->error;
             }

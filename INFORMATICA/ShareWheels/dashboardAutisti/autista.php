@@ -266,8 +266,8 @@ $result_viaggi_conclusi = $conn->query($query_viaggi_conclusi);
 
 if ($result_viaggi_conclusi->num_rows > 0) {
     // Mostra i viaggi conclusi dall'autista
-    echo "<div style='margin: 20px auto; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);' >";
-    echo "<h2>Viaggi Conclusi</h2>";
+    echo "<div style='max-width: 1250px; margin: 0 auto; color: black; text-shadow:none; margin: 20px auto; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);' >";
+    echo "<h1 style='color: Black; text-align: center;'>Viaggi Conclusi</h1>";
 
     while($row_concluso = $result_viaggi_conclusi->fetch_assoc()) {
         $viaggio_id_concluso = $row_concluso["id"];
@@ -335,13 +335,13 @@ if ($result_passeggeri_viaggio->num_rows > 0) {
             echo "<input type='hidden' name='passeggero_email' value='$email_passeggero'>";
             echo "<input type='hidden' name='autista_email' value='$email_autista'>";
             echo "<input type='hidden' name='viaggio_id' value='$viaggio_id_concluso'>";
-            echo "<input type='number' name='voto' min='1' max='5' placeholder='Voto da 1 a 5' required>";
-            echo "<input type='text' name='commento' placeholder='Commento' required>";
+            echo "<input style='padding: 10px; border: 2px solid #ccc; border-radius: 6px;' type='number' name='voto' min='1' max='5' placeholder='Voto da 1 a 5' required>";
+            echo "<input style='padding: 10px; border: 2px solid #ccc; border-radius: 6px;' type='text' name='commento' placeholder='Commento' required>";
             echo "<input type='submit' name='invia_recensione' value='Invia Recensione'>";
             echo "</form>";
             echo "</div>"; // Chiudi div form recensione
         } else {
-            echo "<p>Hai già inviato una recensione per questo passeggero.</p>";
+            echo "<p style='color: red;'>Hai già inviato una recensione per questo passeggero.</p>";
         }
 
         echo "</div>"; // Chiudi div passeggero
@@ -372,9 +372,11 @@ echo "<div style='text-shadow: none; color: black; padding: 20px; margin-right:1
 
 
 // Esegui la query per ottenere i viaggi creati dall'autista
-$query_viaggi = "SELECT id, luogo_partenza, luogo_destinazione, orario_partenza, concluso FROM Viaggi WHERE autista_email = '$email_autista'";
+$query_viaggi = "SELECT id, luogo_partenza, luogo_destinazione, orario_partenza, concluso FROM viaggi WHERE autista_email = '$email_autista'";
 $result_viaggi = $conn->query($query_viaggi);
 
+
+echo "<h1 style='color: Black; text-align: center;'>Viaggi in Corso</h2>";
 if ($result_viaggi->num_rows > 0) {
     // Mostra i viaggi creati dall'autista
     while($row = $result_viaggi->fetch_assoc()) {
@@ -384,6 +386,7 @@ if ($result_viaggi->num_rows > 0) {
         $orario_partenza = $row["orario_partenza"];
         $concluso = $row["concluso"];
 
+        
         if (!$concluso) {
             // Mostra il div per il viaggio con le opzioni per gestire le richieste
             echo "<div>";
@@ -451,6 +454,7 @@ if ($result_viaggi->num_rows > 0) {
             echo "</div>"; // Chiudi il div delle richieste
         } else {
             echo "<p>Nessuna richiesta per questo viaggio al momento.</p>";
+            echo "----------------------------------------------------------------------------------------------------";
         }
         } else {
             

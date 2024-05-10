@@ -1,3 +1,4 @@
+
 <?php
 session_start(); // Avvia la sessione
 
@@ -21,21 +22,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['delete_account'])) {
             $email = $_SESSION['email']; // Ottieni l'email dell'utente loggato
 
-            if($_SESSION['user_type'] === 'autista') {
-                $sql_delete = "DELETE FROM Autisti WHERE email = '$email'";
-            } elseif ($_SESSION['user_type'] === 'passeggero') {
-                $sql_delete = "DELETE FROM Passeggeri WHERE email = '$email'";
-            }
+            if ($_SESSION['user_type'] === 'autista') {
+                $email = $_SESSION['email']; // Ottieni l'email dell'autista loggato
             
-            if ($conn->query($sql_delete) === TRUE) {
-                // Account eliminato con successo, distruggi la sessione
-                session_destroy();
-                header("Location: ./login/login.html"); // Reindirizza l'utente alla pagina di login
-                exit();
-            } else {
-                echo "Errore nell'eliminazione dell'account: " . $conn->error;
+                // Elimina i viaggi associati all'autista
+                $sql_delete_trips = "DELETE FROM viaggi WHERE autista_email = '$email'";
+                if ($conn->query($sql_delete_trips) === TRUE) {
+                    // Ora puoi eliminare l'autista
+                    $sql_delete_driver = "DELETE FROM autisti WHERE email = '$email'";
+                    if ($conn->query($sql_delete_driver) === TRUE) {
+                        // Account eliminato con successo, distruggi la sessione
+                        session_destroy();
+                        header("Location: ./login/login.html"); // Reindirizza l'utente alla pagina di login
+                        exit();
+                    } else {
+                        echo "Errore nell'eliminazione dell'account autista: " . $conn->error;
+                    }
+                } else {
+                    echo "Errore nell'eliminazione dei viaggi: " . $conn->error;
+                }
             }
         }
+
+
+
+        if ($_SESSION['user_type'] === 'passeggero') {
+            $email = $_SESSION['email']; // Ottieni l'email del passeggero loggato
+        
+            // Elimina le recensioni correlate nella tabella recensionipasseggeri
+            $sql_delete_reviews = "DELETE FROM recensioniautisti WHERE passeggero_email = '$email'";
+            if ($conn->query($sql_delete_reviews) === TRUE) {
+                // Elimina le richieste di viaggio associate al passeggero
+                $sql_delete_requests = "DELETE FROM richieste WHERE passeggero_email = '$email'";
+                if ($conn->query($sql_delete_requests) === TRUE) {
+                    // Ora puoi eliminare il passeggero
+                    $sql_delete_passenger = "DELETE FROM passeggeri WHERE email = '$email'";
+                    if ($conn->query($sql_delete_passenger) === TRUE) {
+                        // Account eliminato con successo, distruggi la sessione
+                        session_destroy();
+                        header("Location: ./login/login.html"); // Reindirizza l'utente alla pagina di login
+                        exit();
+                    } else {
+                        echo "Errore nell'eliminazione dell'account passeggero: " . $conn->error;
+                    }
+                } else {
+                    echo "Errore nell'eliminazione delle richieste di viaggio: " . $conn->error;
+                }
+            } else {
+                echo "Errore nell'eliminazione delle recensioni: " . $conn->error;
+            }
+        }
+        
+        
+    
+
+        
         
         // Logout
         if(isset($_POST['logout'])) {
