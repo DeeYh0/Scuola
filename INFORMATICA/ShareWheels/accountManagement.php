@@ -3,7 +3,7 @@ session_start(); // Avvia la sessione
 
 // Connessione al database
 $servername = "localhost";
-$username = "root"; // Inserisci il tuo nome utente del database
+$username = "admin"; // Inserisci il tuo nome utente del database
 $password = "admin"; // Inserisci la tua password del database
 $dbname = "car-pooling"; // Inserisci il nome del tuo database
 

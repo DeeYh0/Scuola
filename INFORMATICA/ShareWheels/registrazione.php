@@ -41,8 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql) === TRUE) {
                 echo "<span style='color: white; font-size: 30px'>La tua registrazione è avvenuta con successo!</span>";
+                // Reindirizzamento dopo 3 secondi
+                echo "<script>setTimeout(function() { window.location.href = 'login/login.html'; }, 3000);</script>";
             } else {
-                echo "<span style='color: red; font-size: 30px'>Errore durante la registrazione come passeggero: " . $conn->error . "</span>";
+                echo "<span style='color: red; font-size: 30px'>Errore durante la registrazione come autista: " . $conn->error . "</span>";
             }
         }
         echo "</body>";
@@ -64,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql) === TRUE) {
                 echo "<span style='color: white; font-size: 30px'>La tua registrazione è avvenuta con successo!</span>";
+                // Reindirizzamento dopo 3 secondi
+                echo "<script>setTimeout(function() { window.location.href = 'login/login.html'; }, 3000);</script>";
             } else {
                 echo "<span style='color: red; font-size: 30px'>Errore durante la registrazione come passeggero: " . $conn->error . "</span>";
             }

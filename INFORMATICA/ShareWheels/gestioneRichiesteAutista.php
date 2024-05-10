@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['accetta'])) {
         $richiesta_id = $_POST['richiesta_id'];
-        $query_accetta = "UPDATE Richieste SET is_accettata = TRUE WHERE id = $richiesta_id";
+        $query_accetta = "UPDATE richieste SET is_accettata = TRUE WHERE id = $richiesta_id";
 
         if ($conn->query($query_accetta) === TRUE) {
             // Operazione di accettazione riuscita
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } elseif (isset($_POST['rifiuta'])) {
         $richiesta_id = $_POST['richiesta_id'];
-        $query_rifiuta = "DELETE FROM Richieste WHERE id = $richiesta_id";
+        $query_rifiuta = "DELETE FROM richieste WHERE id = $richiesta_id";
 
         if ($conn->query($query_rifiuta) === TRUE) {
             // Operazione di rifiuto riuscita
