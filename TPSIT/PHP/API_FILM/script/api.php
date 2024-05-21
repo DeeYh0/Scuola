@@ -1,75 +1,65 @@
 <?php
-
 require_once("script.php");
 
-
-function handle_movies_request() {
-    $movies = get_movies();
-    respond_with_data($movies);
-}
-
-function handle_actors_request() {
-    $actors = get_actors();
-    respond_with_data($actors);
-}
-
-function handle_directors_request() {
-    $directors = get_directors();
-    respond_with_data($directors);
-}
-
-function handle_genres_request() {
-    $genres = get_genres();
-    respond_with_data($genres);
-}
-
-function handle_request($path) {
-    switch ($path) {
-        case '/movies':
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    switch ($_SERVER["PATH_INFO"]) {
+        case "/movies":
             handle_movies_request();
             break;
-        case '/actors':
+        case "/actors":
             handle_actors_request();
             break;
-        case '/directors':
-            handle_directors_request();
+        case "/getmovie":
+            handle_getmovie_request();
             break;
-        case '/genres':
+        case "/getgenres":
             handle_genres_request();
             break;
         default:
-            respond_with_message("Request OK, but no endpoint specified", 200);
+            respond_with_message("Endpoint not found", 404);
             break;
     }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-    handle_request($path);
 } else {
     respond_with_message("Method Not Allowed", 405);
 }
 
+function handle_movies_request() {
+    $result = getAllMovies();
+    respond_with_data($result);
+}
+
+function handle_actors_request() {
+    $result = getActor("Checco Zalone");
+    respond_with_data($result);
+}
+
+function handle_getmovie_request() {
+    $result = getAMovie("Shrek");
+    respond_with_data($result);
+}
+
+function handle_genres_request() {
+    $result = getGenre("Commedia");
+    respond_with_data($result);
+}
+
 function respond_with_data($data) {
     http_response_code(200);
-    header('Content-Type: application/json');
+    header("Content-Type: application/json");
     echo json_encode([
-        "status" => "200",
-        "message" => "OK",
+        "status" => 200,
+        "message" => "",
         "payload" => $data
     ]);
 }
 
 function respond_with_message($message, $status) {
     http_response_code($status);
-    header('Content-Type: application/json');
+    header("Content-Type: application/json");
     echo json_encode([
-        "status" => strval($status),
+        "status" => $status,
         "message" => $message,
         "payload" => []
     ]);
 }
-
-exit;
 ?>

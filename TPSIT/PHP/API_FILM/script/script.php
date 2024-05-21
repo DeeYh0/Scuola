@@ -1,87 +1,122 @@
 <?php
+$localhost = "127.0.0.1";
+$username = "admin";
+$password = "admin";
+$dbname = "db_film";
 
-$db_host = "localhost";
-$db_user = "admin";
-$db_password = "admin";
-$db_name = "db_film";
+$connection = new mysqli($localhost, $username, $password, $dbname);
 
-$conn = new mysqli($db_host, $db_user, $db_password, $db_name);
-
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($connection->connect_error) {
+    die("Connection failed: " . $connection->connect_error);
 }
 
-function execute_query($conn, $query)
-{
-    $result = $conn->query($query);
-    if (!$result) {
-        die("Query failed: " . $conn->error);
+function getAllMovies() {
+    global $connection;
+
+    $query = "
+        SELECT 
+            movie.title, movie.released_year, CONCAT(director.first_name, ' ', director.last_name) as director, genre.name as genre, movie.synopsis
+        FROM 
+            movie
+        JOIN 
+            director ON movie.id = director.id
+        JOIN 
+            genre ON movie.id = genre.id
+    ";
+
+    $result = $connection->query($query);
+    $movies = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $movies[] = $row;
+        }
     }
-    $rows = array();
-    while ($row = $result->fetch_assoc()) {
-        $rows[] = $row;
+
+    return $movies;
+}
+
+function getAMovie($title) {
+    global $connection;
+
+    $query = $connection->prepare("
+        SELECT 
+            movie.title, movie.released_year, CONCAT(director.first_name, ' ', director.last_name) as director, genre.name as genre, movie.synopsis
+        FROM 
+            movie
+        JOIN 
+            director ON movie.id = director.id
+        JOIN 
+            genre ON movie.id = genre.id
+        WHERE 
+            movie.title = ?
+    ");
+
+    $query->bind_param("s", $title);
+    $query->execute();
+    $result = $query->get_result();
+    $movies = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $movies[] = $row;
+        }
     }
-    return $rows;
+    return $movies;
 }
 
+function getActor($name) {
+    global $connection;
 
-function get_actors($conn)
-{
-    $query = "SELECT * FROM actor";
-    return execute_query($conn, $query);
+    $query = $connection->prepare("
+        SELECT 
+            movie.title AS movie_title,
+            movie.released_year AS release_year,
+            CONCAT(actor.first_name, ' ', actor.last_name) AS actor_name
+        FROM 
+            actor
+        JOIN 
+            movie ON actor.id = movie.id
+        WHERE 
+            CONCAT(actor.first_name, ' ', actor.last_name) = ?
+    ");
+
+    $query->bind_param("s", $name);
+    $query->execute();
+    $result = $query->get_result();
+    $actor = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $actor[] = $row;
+        }
+    }
+    return $actor;
 }
 
-function get_directors($conn)
-{
-    $query = "SELECT * FROM director";
-    return execute_query($conn, $query);
+function getGenre($genre) {
+    global $connection;
+
+    $query = $connection->prepare("
+        SELECT genre.name as genre, movie.title as title, movie.synopsis as description
+        FROM
+            movie
+        JOIN 
+            genre ON movie.id = genre.id
+        WHERE 
+            genre.name = ?
+    ");
+
+    $query->bind_param("s", $genre);
+    $query->execute();
+    $result = $query->get_result();
+    $genres = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $genres[] = $row;
+        }
+    }
+    return $genres;
 }
-
-function get_genres($conn)
-{
-    $query = "SELECT * FROM genre";
-    return execute_query($conn, $query);
-}
-
-function get_movies($conn)
-{
-    $query = "SELECT * FROM movie";
-    return execute_query($conn, $query);
-}
-
-
-$actors = get_actors($conn);
-echo "Attori:<br>";
-foreach ($actors as $actor) {
-    echo $actor['first_name'] . " " . $actor['last_name'] . " - " . $actor['birthday_date'] . "<br>";
-}
-
-echo "<br>";
-
-$directors = get_directors($conn);
-echo "Registi:<br>";
-foreach ($directors as $director) {
-    echo $director['first_name'] . " " . $director['last_name'] . " - " . $director['birthday_date'] . "<br>";
-}
-
-echo "<br>";
-
-$genres = get_genres($conn);
-echo "Generi:<br>";
-foreach ($genres as $genre) {
-    echo $genre['name'] . "<br>";
-}
-
-echo "<br>";
-
-
-$movies = get_movies($conn);
-echo "Titoli dei film:<br>";
-foreach ($movies as $movie) {
-    echo $movie['title'] . "<br>";
-}
-
-$conn->close();
-
 ?>
