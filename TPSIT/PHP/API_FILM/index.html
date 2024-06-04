@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API IN PHP</title>
+    <title>Film Search</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    
+    <h1>Film Database</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search for a movie..." required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="searchResults"></div>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value;
+            fetch(`script/api.php?query=${query}`)
+                .then(response => response.text())
+                .then(text => {
+                    console.log(text); // Log output per debugging
+                    const resultsDiv = document.getElementById('searchResults');
+                    resultsDiv.innerHTML = text;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 </body>
 </html>
